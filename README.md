@@ -12,6 +12,8 @@ OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录�
 
 ## 安装(以CentOS7为例）
 
+ 从 [Release](https://github.com/Nugent1a/OpenSSH-rpms/releases) 下载合适的版本
+
 ```bash
 #解压
 tar zxvf openssl-3.3.1-rpms-el7-x64.tar.gz
@@ -21,11 +23,7 @@ rpm -ivh --nodeps --force openssl-3.3.1*/openssl-{3,d}*.rpm
 #安装OpenSSH
 yum install -y openssh-9.8p1*/openssh*
 ```
-个别场景可能会有旧版本的冲突，先卸载掉旧的openssh
-```bash
-cd /
-yum remove openssh*
-```
+
 ```bash
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 chmod 600 /etc/ssh/ssh_host_*_key
