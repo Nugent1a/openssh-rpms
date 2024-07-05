@@ -1,6 +1,6 @@
 # OpenSSH-rpms
 
-本项目旨在升级适用于 CentOS 的 OpenSSH 包。通过此项目，您可以轻松地安装最新版本的 OpenSSH。
+本项目旨在升级适用于 CentOS 的 OpenSSL（带libs）OpenSSH 包。通过此项目，您可以轻松地安装最新版本的 OpenSSH。
 
 OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录和文件传输。本项目提供了RPM包的形式对OpenSSH进行升级，以确保您使用的是最新版本。
 
@@ -19,7 +19,7 @@ OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录�
 tar zxvf openssl-3.3.1-rpms-el7-x64.tar.gz
 tar zxvf openssh-9.8p1-rpms-el7-x64.tar.gz
 #安装OpenSSL
-rpm -ivh --nodeps --force openssl-3.3.1*/openssl-{3,d}*.rpm
+rpm -ivh --nodeps --force openssl-3.3.1*/openssl-{3,d}*.rpm #只装了openssl和openssl-devel，libs自己看着来，悠着点
 #安装OpenSSH
 yum install -y openssh-9.8p1*/openssh*
 ```
