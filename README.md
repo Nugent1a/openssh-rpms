@@ -10,14 +10,29 @@ OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录�
 - 提供 RPM 包
 - 支持 CentOS 系统
 
-## 安装
+## 安装(以CentOS7为例）
 
-没什么好说的，升级完成以后执行
+```bash
+#解压
+tar zxvf openssl-3.3.1-rpms-el7-x64.tar.gz
+tar zxvf openssh-9.8p1-rpms-el7-x64.tar.gz
+#安装OpenSSL
+rpm -ivh --nodeps --force openssl-3.3.1*/openssl-{3,d}*.rpm
+#安装OpenSSH
+yum install -y openssh-9.8p1*/openssh*
+```
+个别场景可能会有旧版本的冲突，先卸载掉旧的openssh
+```bash
+cd /
+yum remove openssh*
+```
 ```bash
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 chmod 600 /etc/ssh/ssh_host_*_key
 systemctl restart sshd
 ```
+
+不要关闭旧的SSH窗口，新开一个SSH，能打开，平稳落地
 
 ## 使用
 
