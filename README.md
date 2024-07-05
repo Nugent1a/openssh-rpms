@@ -36,8 +36,8 @@ systemctl restart sshd
 
 安装完成后，您可以使用以下命令启动 OpenSSH 服务：
 ```bash
-sudo systemctl start sshd
-sudo systemctl enable sshd
+systemctl start sshd
+systemctl enable sshd
 ```
 
 # 免责声明
