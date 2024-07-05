@@ -6,7 +6,7 @@ OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录�
 
 ## 特性
 
-- 升级到最新版本的 OpenSSH
+- 升级到最新版本的 OpenSSH（首次使用这里的SSH RPM 包，需要在这里下载配套的OpenSSL一同安装）
 - 提供 RPM 包
 - 支持 CentOS 系统
 
