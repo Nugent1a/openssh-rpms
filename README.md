@@ -1,14 +1,15 @@
 # OpenSSH-rpms
 
-本项目旨在通过使用 RPM 包升级 OpenSSL（包含libs库文件）和 OpenSSH。通过此项目，您可以轻松地安装和使用最新版本的 OpenSSH。
+您可以通过本项目中提供的 RPM 软件安装包，为您的Linux操作系统轻松的安装或升级到最新版本的 OpenSSH。
 
 OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录和文件传输。本项目提供了RPM包的形式对OpenSSH进行升级，以确保您使用的是最新版本。
 
 ## 特性
 
-- 升级到最新版本的 OpenSSH（首次使用这里的SSH RPM 包，需要在这里下载配套的OpenSSL一同安装）
-- 提供 RPM 包
-- 支持 CentOS 7/8、AlmaLinux 8、RockyLinux 8、AnolisOS 8、Kylin-V10
+- 提供 RPM 包升级到最新版本的 OpenSSH
+- 首次使用这里的SSH RPM 包，需要在这里下载配套的OpenSSL一同安装
+- 在这里下载的OpenSSL-3.3.1，理论上可以支持后续升级好多个在这里下载的OpenSSH版本
+- 支持 x64 架构下的 CentOS 7/8、AlmaLinux 8、RockyLinux 8、AnolisOS 8、Kylin-V10
 
 ## 安装(以CentOS7为例）
 
@@ -20,17 +21,23 @@ tar zxvf openssl-3.3.1-rpms-el7-x64.tar.gz
 tar zxvf openssh-9.8p1-rpms-el7-x64.tar.gz
 #安装OpenSSL
 rpm -ivh --nodeps --force openssl-3.3.1*/openssl-{3,d}*.rpm #只装了openssl和openssl-devel，libs自己看着来，悠着点
-#安装OpenSSH
+#卸载旧版本
+yum remove openssh* -y
+#安装新版本
 yum install -y openssh-9.8p1*/openssh*
 ```
 
 ```bash
+#开启root登录
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+#600权限，不执行有小概率sshd起不来
 chmod 600 /etc/ssh/ssh_host_*_key
+#重启sshd服务
 systemctl restart sshd
 ```
 
 不要关闭旧的SSH窗口，新开一个SSH，能打开，平稳落地
+
 
 ## 使用
 
