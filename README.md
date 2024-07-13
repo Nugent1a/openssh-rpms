@@ -1,4 +1,4 @@
-# OpenSSH-rpms
+# openssh-rpms
 
 您可以通过本项目中提供的 RPM 软件安装包，为您的Linux操作系统轻松的安装或升级到最新版本的 OpenSSH。
 
