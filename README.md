@@ -1,6 +1,6 @@
 # OpenSSH-rpms
 
-本项目旨在升级适用于 CentOS 的 OpenSSL（带libs）OpenSSH 包。通过此项目，您可以轻松地安装最新版本的 OpenSSH。
+本项目旨在通过使用 RPM 包升级 OpenSSL（包含libs库文件）和 OpenSSH。通过此项目，您可以轻松地安装和使用最新版本的 OpenSSH。
 
 OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录和文件传输。本项目提供了RPM包的形式对OpenSSH进行升级，以确保您使用的是最新版本。
 
@@ -8,7 +8,7 @@ OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录�
 
 - 升级到最新版本的 OpenSSH（首次使用这里的SSH RPM 包，需要在这里下载配套的OpenSSL一同安装）
 - 提供 RPM 包
-- 支持 CentOS 系统
+- 支持 CentOS 7/8、AlmaLinux 8、RockyLinux 8、AnolisOS 8、Kylin-V10
 
 ## 安装(以CentOS7为例）
 
