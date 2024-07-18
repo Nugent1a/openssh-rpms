@@ -13,6 +13,8 @@ echo
 echo '==============================================================================='
 
 OS=$(grep '^NAME=' /etc/os-release | sed 's/^NAME="\([^"]*\)"/\1/')
+#OpenSSH版本
+OPENSSH_VERSION=9.8p1
 
 read -p '
 帮助:
@@ -29,11 +31,8 @@ case $STATEMENT in
 echo -e "===============================================================================\n"
 ;;
 esac
-#清理
-rm -rf /opt/openssh-*rpms*
-rm -rf /opt/openssl-*rpms*
+
 rm -rf /root/rpmbuild
-###############################
 
 read -p "是否安装依赖
 
@@ -91,8 +90,10 @@ sleep 1
 	exit
 ;;
 esac
-#升级ssl
+#编译OpenSSL
 function OpenSSL_Build(){
+#清理
+rm -rf /opt/openssl-*rpms*
 mkdir -p /root/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 cp openssl-3.3.1.tar.gz /root/rpmbuild/SOURCES
 cd /root/rpmbuild/SPECS && \
@@ -183,9 +184,10 @@ mv /root/rpmbuild/RPMS/x86_64/* /opt/openssl-3.3.1-rpms
 rm -rf /root/rpmbuild
 }
 
+#编译OpenSSH
 function OpenSSH_Build(){
-#OpenSSH版本
-OPENSSH_VERSION=9.8p1
+#清理
+rm -rf /opt/openssh-*rpms*
 #OpenSSH源码包目录
 OPENSSH_DIR=$(find / -name openssh-$OPENSSH_VERSION.tar.gz)
 #建立编译目录
