@@ -12,6 +12,7 @@ echo Script Description: build_openssh-rpms
 echo
 echo '==============================================================================='
 
+#系统版本
 OS=$(grep '^NAME=' /etc/os-release | sed 's/^NAME="\([^"]*\)"/\1/')
 #OpenSSH版本
 OPENSSH_VERSION=9.8p1
