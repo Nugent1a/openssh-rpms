@@ -7,6 +7,7 @@ OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录�
 ## 特性
 
 - 提供 RPM 包升级到最新版本的 OpenSSH
+- 您也可以下载源码包，用这里的脚本自行编译 RPM（脚本并未提供公网下载源码包的功能）
 - 首次使用这里的SSH RPM 包，需要在这里下载配套的OpenSSL一同安装
 - 在这里下载的OpenSSL-3.3.1，理论上可以支持后续升级好多个在这里下载的OpenSSH版本
 - 支持 x64 架构下的 CentOS 7/8、AlmaLinux 8、RockyLinux 8、AnolisOS 8、Kylin-V10
