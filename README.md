@@ -19,13 +19,13 @@ OpenSSH 是一个免费的 SSH 连接工具，广泛用于安全的远程登录�
 ```bash
 #解压
 tar zxvf openssl-3.3.1-rpms-el7-x64.tar.gz
-tar zxvf openssh-9.8p1-rpms-el7-x64.tar.gz
+tar zxvf openssh-9.9p1-rpms-el7-x64.tar.gz
 #安装OpenSSL
 rpm -ivh --nodeps --force openssl-3.3.1*/openssl-{3,d}*.rpm #只装了openssl和openssl-devel，libs自己看着来，悠着点
 #卸载旧版本
 yum remove openssh* -y
 #安装新版本
-yum install -y openssh-9.8p1*/openssh*
+yum install -y openssh-9.9p1*/openssh*
 ```
 
 ```bash
