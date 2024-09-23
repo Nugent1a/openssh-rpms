@@ -29,6 +29,8 @@ yum install -y openssh-9.8p1*/openssh*
 ```
 
 ```bash
+#关闭selinux
+sed -i 's/^SELINUX=enforcing$/SELINUX=disabled/' /etc/selinux/config && setenforce 0
 #开启root登录
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 #600权限，不执行有小概率sshd起不来
