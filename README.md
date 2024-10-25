@@ -31,10 +31,26 @@ yum install -y openssh-9.9p1*/openssh*
 ```bash
 #关闭selinux
 sed -i 's/^SELINUX=enforcing$/SELINUX=disabled/' /etc/selinux/config && setenforce 0
+#启用PAM
+sed -i 's/#UsePAM.*/UsePAM yes/' /etc/ssh/sshd_config
 #开启root登录
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 #600权限，不执行有小概率sshd起不来
 chmod 600 /etc/ssh/ssh_host_*_key
+#修改/etc/pam.d/sshd配置
+cat > /etc/pam.d/sshd << EOF
+#%PAM-1.0
+auth       required     pam_sepermit.so
+auth       include      password-auth
+account    required     pam_nologin.so
+account    include      password-auth
+password   include      password-auth
+session    required     pam_limits.so
+session    required     pam_selinux.so close
+session    required     pam_loginuid.so
+session    optional     pam_keyinit.so force revoke
+session    include      password-auth
+EOF
 #重启sshd服务
 systemctl restart sshd
 ```
